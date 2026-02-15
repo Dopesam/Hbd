@@ -80,18 +80,25 @@ body{
   50%{color:#ffd700;}
 }
 
-/* Typing message */
+/* Magical typing message */
 #typing{
   position:absolute;
-  top:45%;
+  top:32%;
   left:50%;
-  transform:translate(-50%,-50%);
+  transform:translate(-50%,-50%) scale(0);
   color:white;
-  font-size:0.9rem;
+  font-size:1rem;
   text-align:center;
   max-width:90%;
   z-index:6;
   min-height:2em;
+  opacity:0;
+  text-shadow: 0 0 5px #fff, 0 0 10px #ff77aa, 0 0 20px #ff4d8d;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+#typing.show{
+  transform:translate(-50%,-50%) scale(1);
+  opacity:1;
 }
 
 /* Photos */
@@ -205,6 +212,7 @@ const music=document.getElementById("music");
 const startBtn=document.getElementById("startBtn");
 const scene=document.getElementById("scene");
 
+// Start button click
 startBtn.onclick=()=>{
   startBtn.remove();
   scene.style.display="block";
@@ -228,11 +236,12 @@ startBtn.onclick=()=>{
   });
 };
 
-// Typing effect
+// Magical typing effect
 const text="Wishing you endless joy, love, laughter 💖✨ May all your dreams come true!";
-let i=0;
 function typingEffect(){
   const el=document.getElementById("typing");
+  el.classList.add("show"); // magical entrance
+  let i=0;
   const t=setInterval(()=>{
     el.textContent+=text.charAt(i++);
     if(i>=text.length) clearInterval(t);
