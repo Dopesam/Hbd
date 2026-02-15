@@ -34,15 +34,15 @@ body{
   position:absolute;
   inset:0;
   margin:auto;
-  width:220px;
-  height:60px;
-  font-size:1.1rem;
+  width:180px;
+  height:50px;
+  font-size:1rem;
   border:none;
   border-radius:50px;
   background:var(--pink);
   color:white;
   cursor:pointer;
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
   z-index:20;
 }
 #startBtn:hover{transform:scale(1.05);transition:0.3s}
@@ -53,11 +53,11 @@ body{
 /* Magic title */
 #magicTitle{
   position:absolute;
-  top:25%;
+  top:20%;
   left:50%;
   transform:translate(-50%,-50%);
   text-align:center;
-  font-size:clamp(2rem,6vw,4rem);
+  font-size:clamp(1.5rem,6vw,3rem);
   font-weight:900;
   color:white;
   z-index:6;
@@ -67,10 +67,7 @@ body{
 #magicTitle span{
   display:inline-block;
   animation:floatGlow 2s ease-in-out infinite, colorPulse 3s ease-in-out infinite;
-  text-shadow:
-    0 0 5px #fff,
-    0 0 10px #ff4d8d,
-    0 0 20px #ff4d8d;
+  text-shadow:0 0 5px #fff,0 0 10px #ff4d8d,0 0 20px #ff4d8d;
 }
 
 @keyframes floatGlow{
@@ -86,11 +83,11 @@ body{
 /* Typing message */
 #typing{
   position:absolute;
-  top:50%;
+  top:45%;
   left:50%;
   transform:translate(-50%,-50%);
   color:white;
-  font-size:1rem;
+  font-size:0.9rem;
   text-align:center;
   max-width:90%;
   z-index:6;
@@ -100,15 +97,15 @@ body{
 /* Photos */
 .photo{
   position:absolute;
-  width:180px;
-  height:180px;
+  width:120px;
+  height:120px;
   border-radius:50%;
   background-size:cover;
   background-position:center;
-  box-shadow:0 0 0 4px rgba(255,255,255,.95),
-             0 0 20px rgba(255,77,141,0.8),
-             0 0 50px rgba(255,77,141,0.6),
-             0 10px 25px rgba(0,0,0,.3);
+  box-shadow:0 0 0 3px rgba(255,255,255,.95),
+             0 0 15px rgba(255,77,141,0.8),
+             0 0 40px rgba(255,77,141,0.6),
+             0 8px 20px rgba(0,0,0,.3);
   animation:photoIn 1.2s ease forwards,floatPhoto 4s ease-in-out infinite,glowPulse 2s ease-in-out infinite;
   opacity:0;
   z-index:4;
@@ -116,28 +113,28 @@ body{
 
 @keyframes glowPulse{
   0%,100%{
-    box-shadow:0 0 0 4px rgba(255,255,255,.95),
-               0 0 20px rgba(255,77,141,0.6),
-               0 0 50px rgba(255,77,141,0.4),
-               0 10px 25px rgba(0,0,0,.3);
+    box-shadow:0 0 0 3px rgba(255,255,255,.95),
+               0 0 15px rgba(255,77,141,0.6),
+               0 0 40px rgba(255,77,141,0.4),
+               0 8px 20px rgba(0,0,0,.3);
   }
   50%{
-    box-shadow:0 0 0 4px rgba(255,255,255,1),
-               0 0 30px rgba(255,77,141,0.8),
-               0 0 70px rgba(255,77,141,0.6),
-               0 10px 25px rgba(0,0,0,.35);
+    box-shadow:0 0 0 3px rgba(255,255,255,1),
+               0 0 25px rgba(255,77,141,0.8),
+               0 0 50px rgba(255,77,141,0.6),
+               0 8px 20px rgba(0,0,0,.35);
   }
 }
 
 @keyframes photoIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-@keyframes floatPhoto{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes floatPhoto{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
 /* Photo positions */
-.p1{top:5%;left:5%;width:200px;height:200px;z-index:5;}
-.p2{top:5%;right:5%;width:220px;height:220px;z-index:6;}
-.p3{top:45%;left:50%;transform:translate(-50%,-50%);}
-.p4{bottom:5%;left:5%;}
-.p5{bottom:5%;right:5%;}
+.p1{top:5%;left:5%;width:120px;height:120px;z-index:5;}
+.p2{top:5%;right:5%;width:120px;height:120px;z-index:6;}
+.p3{top:40%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;}
+.p4{bottom:5%;left:5%;width:120px;height:120px;}
+.p5{bottom:5%;right:5%;width:120px;height:120px;}
 
 /* Cake */
 #cake{
@@ -145,7 +142,7 @@ body{
   bottom:5%;
   left:50%;
   transform:translateX(-50%);
-  font-size:3rem;
+  font-size:2rem;
   animation:bounce 2s infinite;
   z-index:6;
 }
@@ -165,24 +162,13 @@ canvas{
 /* Falling effects (balloons/confetti) */
 .fx{
   position:absolute;
-  font-size:1.2rem;
+  font-size:1rem;
   animation:fall linear infinite;
 }
 @keyframes fall{from{transform:translateY(110vh)}to{transform:translateY(-120vh)}}
 
 /* Signature */
 #signature{position:fixed;bottom:5px;right:10px;font-size:.65rem;opacity:.7;color:white;}
-
-/* Mobile adjustments */
-@media(max-width:480px){
-  .photo{width:120px;height:120px;}
-  .p1{width:140px;height:140px;}
-  .p2{width:160px;height:160px;}
-  #cake{font-size:2rem;}
-  #magicTitle{font-size:clamp(1.5rem,5vw,3rem);}
-  #typing{font-size:.9rem;}
-  #startBtn{width:180px;height:50px;font-size:1rem;}
-}
 </style>
 </head>
 <body>
@@ -190,21 +176,21 @@ canvas{
 <button id="startBtn">✨ Click me to see magic ✨</button>
 
 <div id="scene">
-<h1 id="magicTitle">
-  <span>H</span><span>A</span><span>P</span><span>P</span><span>Y</span><br>
-  <span>B</span><span>I</span><span>R</span><span>T</span><span>H</span><span>D</span><span>A</span><span>Y</span><br>
-  <span>F</span><span>A</span><span>R</span><span>D</span><span>O</span><span>S</span><span>A</span>
-</h1>
+  <h1 id="magicTitle">
+    <span>H</span><span>A</span><span>P</span><span>P</span><span>Y</span><br>
+    <span>B</span><span>I</span><span>R</span><span>T</span><span>H</span><span>D</span><span>A</span><span>Y</span><br>
+    <span>F</span><span>A</span><span>R</span><span>D</span><span>O</span><span>S</span><span>A</span>
+  </h1>
 
-<div id="typing"></div>
-<div id="cake">🎂🔥</div>
-<canvas id="fireworks"></canvas>
+  <div id="typing"></div>
+  <div id="cake">🎂🔥</div>
+  <canvas id="fireworks"></canvas>
 
-<div class="photo p1" style="background-image:url('asets/IMG-20250105-WA0036.jpg')"></div>
-<div class="photo p2" style="background-image:url('asets/e0b0bc3ff816472093be9fdc77a7e6d7.jpg')"></div>
-<div class="photo p3" style="background-image:url('asets/7d868680-9cc2-41cb-ba73-01a1519d57e9.jpeg')"></div>
-<div class="photo p4" style="background-image:url('asets/8eab047d-9a6d-44f5-930f-ac55f51ae264.jpeg')"></div>
-<div class="photo p5" style="background-image:url('asets/84435ed8a77448ecac4f54a3764fbbc9.jpg')"></div>
+  <div class="photo p1" style="background-image:url('asets/IMG-20250105-WA0036.jpg')"></div>
+  <div class="photo p2" style="background-image:url('asets/e0b0bc3ff816472093be9fdc77a7e6d7.jpg')"></div>
+  <div class="photo p3" style="background-image:url('asets/7d868680-9cc2-41cb-ba73-01a1519d57e9.jpeg')"></div>
+  <div class="photo p4" style="background-image:url('asets/8eab047d-9a6d-44f5-930f-ac55f51ae264.jpeg')"></div>
+  <div class="photo p5" style="background-image:url('asets/84435ed8a77448ecac4f54a3764fbbc9.jpg')"></div>
 </div>
 
 <div id="signature">by Phantom</div>
@@ -253,11 +239,11 @@ function typingEffect(){
   },50);
 }
 
-// Fireworks using requestAnimationFrame for smoothness
+// Fireworks using requestAnimationFrame
 function fireworks(){
   const c=document.getElementById("fireworks");
   const ctx=c.getContext("2d");
-  c.width=innerWidth;c.height=innerHeight;
+  c.width=innerWidth; c.height=innerHeight;
   const particles=[];
   for(let i=0;i<50;i++){
     particles.push({
