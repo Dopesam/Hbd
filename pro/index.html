@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Fardosa 🎉</title>
+
+<style>
+:root{
+  --pink:#ff4d8d;
+  --gold:#ffd700;
+  --bg:linear-gradient(135deg,#3a1c71,#5f2c82,#ff4d8d,#ffb347);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  height:100vh;
+  background:var(--bg);
+  background-size:400% 400%;
+  animation:gradientMove 12s ease infinite;
+  overflow:hidden;
+  font-family:'Segoe UI',system-ui,sans-serif;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* START BUTTON */
+#startBtn{
+  position:absolute;
+  inset:0;
+  margin:auto;
+  width:280px;
+  height:70px;
+  font-size:1.3rem;
+  border:none;
+  border-radius:50px;
+  background:var(--pink);
+  color:white;
+  cursor:pointer;
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+  z-index:20;
+}
+#startBtn:hover{transform:scale(1.1)}
+
+/* SCENE */
+#scene{position:absolute;inset:0;display:none}
+
+/* MAGICAL TITLE */
+#magicTitle{
+  position:absolute;
+  top:36%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  font-size:clamp(2.5rem,6vw,5rem);
+  font-weight:900;
+  color:white;
+  z-index:6;
+}
+
+#magicTitle span{
+  display:inline-block;
+  animation:floatGlow 2s ease-in-out infinite, colorPulse 3s ease-in-out infinite;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 15px #ff4d8d,
+    0 0 25px #ff4d8d,
+    0 0 40px #ff4d8d;
+}
+
+#magicTitle span:nth-child(odd){animation-delay:calc(0.1s * var(--i));}
+#magicTitle span:nth-child(even){animation-delay:calc(0.1s * var(--i));}
+
+@keyframes floatGlow{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-10px) scale(1.1);}
+}
+
+@keyframes colorPulse{
+  0%{color:#fff;text-shadow:0 0 10px #fff,0 0 20px #ff77aa,0 0 30px #ff77aa;}
+  50%{color:#ffdd00;text-shadow:0 0 15px #ffd700,0 0 35px #ff4d8d,0 0 45px #ff77aa;}
+  100%{color:#fff;text-shadow:0 0 10px #fff,0 0 20px #ff77aa,0 0 30px #ff77aa;}
+}
+
+/* MESSAGE */
+#typing{
+  position:absolute;
+  top:62%;
+  left:50%;
+  transform:translateX(-50%);
+  color:white;
+  font-size:1.15rem;
+  text-align:center;
+  max-width:90%;
+  z-index:6;
+  min-height:2.5em;
+}
+
+/* PHOTOS */
+.photo{
+  position:absolute;
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  background-size:cover;
+  background-position:center;
+  box-shadow:
+    0 0 0 6px rgba(255,255,255,.95),
+    0 0 35px rgba(255,77,141,1),
+    0 0 80px rgba(255,77,141,.8),
+    0 20px 45px rgba(0,0,0,.45);
+  animation:photoIn 1.5s ease forwards,floatPhoto 6s ease-in-out infinite,glowPulse 2.8s ease-in-out infinite;
+  opacity:0;
+  z-index:4;
+}
+
+@keyframes glowPulse{
+  0%,100%{
+    box-shadow:
+      0 0 0 6px rgba(255,255,255,.95),
+      0 0 30px rgba(255,77,141,.8),
+      0 0 70px rgba(255,77,141,.6),
+      0 20px 45px rgba(0,0,0,.45);
+  }
+  50%{
+    box-shadow:
+      0 0 0 6px rgba(255,255,255,1),
+      0 0 45px rgba(255,77,141,1),
+      0 0 100px rgba(255,77,141,.9),
+      0 20px 45px rgba(0,0,0,.5);
+  }
+}
+
+@keyframes photoIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes floatPhoto{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+
+/* POSITIONS */
+.p1{
+  top:10%;
+  left:10%;
+  width:320px;   /* Photo 1 bigger */
+  height:320px;
+  z-index:5;
+}
+.p2{
+  top:10%;
+  right:10%;
+  width:380px;   /* Photo 2 bigger than Photo 1 */
+  height:380px;
+  z-index:6;     /* Bring above Photo 1 */
+}
+.p3{top:50%;left:50%;transform:translate(-50%,-50%)}
+.p4{bottom:10%;left:10%}
+.p5{bottom:10%;right:10%}
+
+/* CAKE */
+#cake{
+  position:absolute;
+  bottom:5%;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:4rem;
+  animation:bounce 2s infinite;
+  z-index:6;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+
+/* FIREWORKS */
+canvas{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:10;
+}
+
+/* FALLING EFFECTS */
+.fx{
+  position:absolute;
+  font-size:1.6rem;
+  animation:fall linear infinite;
+}
+@keyframes fall{from{transform:translateY(110vh)}to{transform:translateY(-120vh)}}
+
+/* SIGNATURE */
+#signature{position:fixed;bottom:10px;right:14px;font-size:.75rem;opacity:.7;color:white;}
+
+/* MOBILE */
+@media(max-width:768px){
+  .photo{width:150px;height:150px}
+  #cake{font-size:3rem}
+  .p1{width:220px;height:220px}
+  .p2{width:260px;height:260px}  /* Mobile scaling for p2 */
+}
+</style>
+</head>
+
+<body>
+
+<button id="startBtn">✨ Click me to see magic ✨</button>
+
+<div id="scene">
+
+<h1 id="magicTitle">
+  <span>H</span><span>A</span><span>P</span><span>P</span><span>Y</span><br>
+  <span>B</span><span>I</span><span>R</span><span>T</span><span>H</span><span>D</span><span>A</span><span>Y</span><br>
+  <span>F</span><span>A</span><span>R</span><span>D</span><span>O</span><span>S</span><span>A</span>
+</h1>
+
+<div id="typing"></div>
+<div id="cake">🎂🔥</div>
+<canvas id="fireworks"></canvas>
+
+<div class="photo p1" style="background-image:url('asets/IMG-20250105-WA0036.jpg')"></div>
+<div class="photo p2" style="background-image:url('asets/e0b0bc3ff816472093be9fdc77a7e6d7.jpg')"></div>
+<div class="photo p3" style="background-image:url('asets/7d868680-9cc2-41cb-ba73-01a1519d57e9.jpeg')"></div>
+<div class="photo p4" style="background-image:url('asets/8eab047d-9a6d-44f5-930f-ac55f51ae264.jpeg')"></div>
+<div class="photo p5" style="background-image:url('asets/84435ed8a77448ecac4f54a3764fbbc9.jpg')"></div>
+
+</div>
+
+<div id="signature">by Phantom</div>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5c7c85d89b.mp3">
+</audio>
+
+<script>
+const music=document.getElementById("music");
+const startBtn=document.getElementById("startBtn");
+const scene=document.getElementById("scene");
+
+startBtn.onclick=()=>{
+  startBtn.remove();
+  scene.style.display="block";
+
+  music.volume=0;
+  music.play().catch(()=>{});
+  let v=0;
+  const fade=setInterval(()=>{
+    v+=0.05;
+    music.volume=Math.min(v,0.5);
+    if(v>=0.5) clearInterval(fade);
+  },200);
+
+  typingEffect();
+  fireworks();
+  effects();
+
+  document.querySelectorAll('.photo').forEach((p,i)=>{
+    p.style.animationDelay=i*0.3+'s';
+  });
+};
+
+const text="Wishing you endless joy, love, laughter 💖✨ May all your dreams come true!";
+let i=0;
+function typingEffect(){
+  const el=document.getElementById("typing");
+  const t=setInterval(()=>{
+    el.textContent+=text.charAt(i++);
+    if(i>=text.length) clearInterval(t);
+  },60);
+}
+
+function fireworks(){
+  const c=document.getElementById("fireworks");
+  const ctx=c.getContext("2d");
+  c.width=innerWidth;c.height=innerHeight;
+  setInterval(()=>{
+    ctx.clearRect(0,0,c.width,c.height);
+    for(let i=0;i<80;i++){
+      ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`;
+      ctx.beginPath();
+      ctx.arc(Math.random()*c.width,Math.random()*c.height/2,3,0,7);
+      ctx.fill();
+    }
+  },800);
+}
+
+function effects(){
+  const icons=["🎈","🌸","🎊","💖"];
+  for(let i=0;i<35;i++){
+    const e=document.createElement("div");
+    e.className="fx";
+    e.textContent=icons[Math.random()*icons.length|0];
+    e.style.left=Math.random()*100+"vw";
+    e.style.animationDuration=4+Math.random()*6+"s";
+    scene.appendChild(e);
+  }
+}
+</script>
+
+</body>
+</html>
